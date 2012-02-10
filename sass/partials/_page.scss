@@ -1,0 +1,18 @@
+//-----------------------------------------------
+// The following html5-boilerplate styles should
+// probably be customized for each site
+//-----------------------------------------------
+body, select, input, textarea {
+  color: $font-color;
+  // Set your base font here, to apply evenly
+  // font-family: Georgia, serif;
+}
+
+//-----------------------------------
+// Basic layout
+//-----------------------------------
+
+body > * {
+	margin: 0 auto;
+	@include six-column;
+}
