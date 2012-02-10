@@ -31,52 +31,58 @@ $invalid-background-color: $light-red !default;
 
 // Base
 @mixin line-height {
+	line-height: 24px;
 	line-height: 1.5rem;
 	@media screen and (min-width: 48em) {}
-	@media screen and (min-width: 60em) { line-height: 1.688rem; }
+	@media screen and (min-width: 60em) { line-height: 27px; line-height: 1.688rem; }
 }
 
 /* Mixins */
 @mixin one-column {
-	@media screen and (min-width: 48em) { width: 6.75rem; }
-	@media screen and (min-width: 60em) { width: 7.5rem; }
+	@media screen and (min-width: 48em) { width: 108px; width: 6.75rem; }
+	@media screen and (min-width: 60em) { width: 120px; width: 7.5rem; }
 }
 
 @mixin two-column {
-	@media screen and (min-width: 48em) { width: 15rem; }
-	@media screen and (min-width: 60em) { width: 18rem; }
+	@media screen and (min-width: 48em) { width: 240px; width: 15rem; }
+	@media screen and (min-width: 60em) { width: 288px; width: 18rem; }
 }
 
 @mixin three-column {
-	@media screen and (min-width: 48em) { width: 23.25rem; }
-	@media screen and (min-width: 60em) { width: 28.5rem; }
+	@media screen and (min-width: 48em) { width: 372px; width: 23.25rem; }
+	@media screen and (min-width: 60em) { width: 456px; width: 28.5rem; }
 }
 
 @mixin four-column {
-	@media screen and (min-width: 48em) { width: 31.5rem; }
-	@media screen and (min-width: 60em) { width: 39rem; }
+	@media screen and (min-width: 48em) { width: 504px; width: 31.5rem; }
+	@media screen and (min-width: 60em) { width: 624px; width: 39rem; }
 }
 
 @mixin five-column {
-	@media screen and (min-width: 48em) { width: 39.28rem; }
-	@media screen and (min-width: 60em) { width: 49.5rem; }
+	@media screen and (min-width: 48em) { width: 628px; width: 39.28rem; }
+	@media screen and (min-width: 60em) { width: 792px; width: 49.5rem; }
 }
 
 @mixin six-column {
-	@media screen and (min-width: 48em) { width: 48rem; }
-	@media screen and (min-width: 60em) { width: 60rem; }
+	@media screen and (min-width: 48em) { width: 768px; width: 48rem; }
+	@media screen and (min-width: 60em) { width: 960px; width: 60rem; }
 }
-
+$gutter-medium-px: 24px;
 $gutter-medium: 1.5rem;
+$gutter-large-px: 48px;
 $gutter-large: 3rem;
 
 @mixin side-line {
 	@media screen and (min-width: 48em) {
+		margin-left: -12px;
 		margin-left: -.75rem;
+		padding-left: 11px;
 		padding-left: .74rem;
 	}
 	@media screen and (min-width: 60em) {
+		margin-left: 24px;
 		margin-left: -1.5rem;
+		padding-left: 23px;
 		padding-left: 1.49rem;
 	}
 }
@@ -87,8 +93,11 @@ $background-transition: background 0.3s ease;
 $border-transition: border 0.3s ease;
 
 @mixin buttonification {
+	font-size: 24px;
 	font-size: 1.5rem;
+	padding: 7px 12px;
 	padding: .44rem .75rem;
+	@include border-radius(4px);
 	@include border-radius(.25rem);	
 	@include transition($color-transition, $background-transition, $border-transition);
 }
