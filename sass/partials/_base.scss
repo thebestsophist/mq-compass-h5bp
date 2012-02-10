@@ -67,10 +67,16 @@ $invalid-background-color: $light-red !default;
 	@media screen and (min-width: 48em) { width: 768px; width: 48rem; }
 	@media screen and (min-width: 60em) { width: 960px; width: 60rem; }
 }
-$gutter-medium-px: 24px;
-$gutter-medium: 1.5rem;
-$gutter-large-px: 48px;
-$gutter-large: 3rem;
+
+@mixin gutter-left {
+	@media screen and (min-width: 48em) { margin-left: 24px; margin-left: 1.5rem; }
+	@media screen and (min-width: 60em) { margin-left: 48px; margin-left: 3rem; }
+}
+
+@mixin gutter-right {
+	@media screen and (min-width: 48em) { margin-right: 24px; margin-right: 1.5rem; }
+	@media screen and (min-width: 60em) { margin-right: 48px; margin-right: 3rem; }
+}
 
 @mixin side-line {
 	@media screen and (min-width: 48em) {
