@@ -1,7 +1,17 @@
-//-----------------------------------------------
-// The following html5-boilerplate styles should
-// probably be customized for each site
-//-----------------------------------------------
+//--------------------------------------------------
+// Layout is based on mobile-first design process.
+// The basic layout is portrait-mode mobile screens
+// starting at 320px wide. The 6-column layout kicks
+// in at 768px and adjusts at 960px. Decided to use
+// non-flexible layouts for greater typographic
+// control and better size control for images and
+// other multimedia. Also, I'm not willing to give
+// up that much control to brainless browsers.
+// Alternatively, I'm just not smart enough to think
+// in flexible grids. If you are, feel free to edit
+// the column mixins in _base.scss and please share.
+//---------------------------------------------------
+
 body, select, input, textarea {
   color: $font-color;
   // Set your base font here, to apply evenly
@@ -14,5 +24,7 @@ body, select, input, textarea {
 
 body > * {
 	margin: 0 auto;
+	width: 20em;	
+	
 	@include six-column;
 }

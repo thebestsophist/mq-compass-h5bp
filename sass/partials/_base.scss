@@ -36,8 +36,24 @@ $invalid-background-color: $light-red !default;
 	@media screen and (min-width: 48em) {}
 	@media screen and (min-width: 60em) { line-height: 27px; line-height: 1.688rem; }
 }
+/*--------------------------------------------------
+	Mixins 
+  --------------------------------------------------
 
-/* Mixins */
+	The 6-column layout kicks in at 768px and adjusts
+	at 960px. Decided to use non-flexible layouts for 
+	greater typographic	control and better size
+	control for images and other multimedia. Also, I'm 
+	not willing to give up that much control to
+	brainless browsers.
+
+	Alternatively, I'm just not smart enough to think
+	in flexible grids. If you are, please edit
+	and share.
+
+  ---------------------------------------------------
+*/
+
 @mixin one-column {
 	@media screen and (min-width: 48em) { width: 108px; width: 6.75rem; }
 	@media screen and (min-width: 60em) { width: 120px; width: 7.5rem; }

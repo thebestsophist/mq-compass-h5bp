@@ -31,7 +31,7 @@
 // Typography
 // Scale: http://modularscale.com/scale/?px1=16&px2=12&ra1=1.5&ra2=0
 // =============================================================================
-//@include h5bp-typography;
+// @include h5bp-typography; // Ditching this for my own
 body {
 	@media screen and (min-width: 60em) { line-height: 27px; line-height: 1.688rem; }
 }
@@ -90,6 +90,7 @@ p, blockquote {
 	font-size: 1rem;
 }
 
+// Indents paragraphs that follow anything but a heading.
 img + p, aside + p, p + p, figure + p, figcaption + p, blockquote + p, q + p {
 	text-indent: 24px;
 	text-indent: 1.5rem;
@@ -113,7 +114,7 @@ img + p, aside + p, p + p, figure + p, figcaption + p, blockquote + p, q + p {
 // =============================================================================
 // Forms
 // =============================================================================
-//@include h5bp-forms;
+//@include h5bp-forms;  // Ditching this for my own
 
 form { margin: 0; }
 fieldset { border: 0; margin: 0; padding: 0; }
