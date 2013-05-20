@@ -26,5 +26,18 @@ body > * {
 	margin: 0 auto;
 	width: 20em;	
 	
-	@include six-column;
+	@include set-column(12, $small-column, $small-gutter, $small-width);
+	@include set-column(12, $large-column, $large-gutter, $large-width);
+}
+
+
+
+
+// No js at bottom to override everything above
+.no-js {
+
+}
+
+.wf-inactive {
+
 }

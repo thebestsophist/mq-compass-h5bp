@@ -3,14 +3,18 @@
 @import "compass/utilities";
 
 // Basic colors
+$dark-blue: #024;
 $blue: #036;
 $light-blue: #69c;
+$dark-green: #242;
 $green: #363;
 $light-green: #9c9;
+$dark-purple: #224;
 $purple: #336;
 $light-purple: #99c;
 $gold: #663;
 $light-gold: #ff9;
+$dark-red: #422;
 $red: #633;
 $light-red: #c99;
 $black: #111;
@@ -24,102 +28,128 @@ $link-hover-color: $light-blue !default;
 $link-visited-color: $purple !default;
 
 $selected-font-color: $white !default;
-$selected-background-color: $gold !default;
+$selected-background-color: $dark-purple !default;
 
 $valid-background-color: $light-green !default;
 $invalid-background-color: $light-red !default;
 
-// Base
-@mixin line-height {
-	line-height: 24px;
-	line-height: 1.5rem;
-	@media screen and (min-width: 48em) {}
-	@media screen and (min-width: 60em) { line-height: 27px; line-height: 1.688rem; }
-}
+
+
 /*--------------------------------------------------
-	Mixins 
+	Layout 
   --------------------------------------------------
 
-	The 6-column layout kicks in at 768px and adjusts
-	at 960px. Decided to use non-flexible layouts for 
-	greater typographic	control and better size
-	control for images and other multimedia. Also, I'm 
-	not willing to give up that much control to
-	brainless browsers.
-
-	Alternatively, I'm just not smart enough to think
-	in flexible grids. If you are, please edit
-	and share.
+	Setting column sizes is now more flexible than
+	before. You can now set your own breakpoints,
+	as well as completely different layouts per
+	breakpoint. (Defaults are now 12 columns at
+	50rem and 65rem.)
 
   ---------------------------------------------------
 */
 
-@mixin one-column {
-	@media screen and (min-width: 48em) { width: 108px; width: 6.75rem; }
-	@media screen and (min-width: 60em) { width: 120px; width: 7.5rem; }
+$small-width: 50rem;
+$small-column: 1.25rem;
+$small-gutter: 3rem;
+
+$large-width: 65rem;
+$large-column: 1rem;
+$large-gutter: $small-gutter;
+
+@mixin set-column($columns: 3, $column-size: $small-column, $gutter-size: $small-gutter, $full-width: $small-width) {
+
+// Breakpoints are set as 2em larger than the full width to care for hanging bullets
+	@media screen and (min-width: ($full-width / 1rem * 1em) + 2em) {
+		width: (($column-size / 1rem * 16px) * $columns) + ($gutter-size / 1rem * 16px * ($columns - 1));
+		width: ($column-size * $columns) + ($gutter-size * ($columns - 1));
+	}
 }
 
-@mixin two-column {
-	@media screen and (min-width: 48em) { width: 240px; width: 15rem; }
-	@media screen and (min-width: 60em) { width: 288px; width: 18rem; }
-}
-
-@mixin three-column {
-	@media screen and (min-width: 48em) { width: 372px; width: 23.25rem; }
-	@media screen and (min-width: 60em) { width: 456px; width: 28.5rem; }
-}
-
-@mixin four-column {
-	@media screen and (min-width: 48em) { width: 504px; width: 31.5rem; }
-	@media screen and (min-width: 60em) { width: 624px; width: 39rem; }
-}
-
-@mixin five-column {
-	@media screen and (min-width: 48em) { width: 628px; width: 39.28rem; }
-	@media screen and (min-width: 60em) { width: 792px; width: 49.5rem; }
-}
-
-@mixin six-column {
-	@media screen and (min-width: 48em) { width: 768px; width: 48rem; }
-	@media screen and (min-width: 60em) { width: 960px; width: 60rem; }
-}
-
-@mixin gutter-left {
-	@media screen and (min-width: 48em) { margin-left: 24px; margin-left: 1.5rem; }
-	@media screen and (min-width: 60em) { margin-left: 48px; margin-left: 3rem; }
-}
-
-@mixin gutter-right {
-	@media screen and (min-width: 48em) { margin-right: 24px; margin-right: 1.5rem; }
-	@media screen and (min-width: 60em) { margin-right: 48px; margin-right: 3rem; }
+@mixin set-gutter($side, $columns: 0, $column-size: $small-column, $gutter-size: $small-gutter, $full-width: $small-width) {
+	@media screen and (min-width: ($size-small / 1rem * 1em)) { 
+		margin-#{$side}: ($column-size / 1rem * $columns) + ($gutter-size / 1rem * $columns) * 16px;
+		margin-#{$side}: ($column-size / 1rem * $columns) + ($gutter-size / 1rem * $columns);
+	}
 }
 
 @mixin side-line {
-	@media screen and (min-width: 48em) {
-		margin-left: -12px;
-		margin-left: -.75rem;
-		padding-left: 11px;
-		padding-left: .74rem;
-	}
+	margin: 0 0 0 -(($small-gutter / 1rem * 16px) / 3);
+	margin: 0 0 0 -(($small-gutter) / 3);
+	padding: 0 0 0 (($small-gutter / 1rem * 16px - 1px) / 3);
+	padding: 0 0 0 (($small-gutter - .15rem) / 3);
+
 	@media screen and (min-width: 60em) {
-		margin-left: 24px;
-		margin-left: -1.5rem;
-		padding-left: 23px;
-		padding-left: 1.49rem;
+		margin-left: -(($large-gutter / 1rem * 16px) / 3);
+		margin-left: -($large-gutter / 2);
+		padding-left: (($large-gutter / 1rem * 16px - 1px) / 3);
+		padding-left: (($large-gutter) / 2 - .15rem);
 	}
 }
 
-// Transitions
-$color-transition: color 0.6s ease;
-$background-transition: background 0.3s ease;
-$border-transition: border 0.3s ease;
+/*--------------------------------------------------
+	Typographic Scale 
+  --------------------------------------------------
+	http://modularscale.com/scale/?px1=16&px2=12&ra1=1.5&ra2=0
+	
+	Line-height can now be set by breakpoints.
+*/
 
-@mixin buttonification {
-	font-size: 24px;
-	font-size: 1.5rem;
-	padding: 7px 12px;
-	padding: .44rem .75rem;
-	@include border-radius(4px);
-	@include border-radius(.25rem);	
-	@include transition($color-transition, $background-transition, $border-transition);
+$base-plus-six: 5.063rem;
+$base-plus-five: 3.375rem;
+$base-plus-four: 2.25rem;
+$base-plus-three: 1.688rem;
+$base-plus-two: 1.5rem;
+$base-plus-one: 1.125rem;
+$base: 1rem;
+$base-minus-one: .75rem;
+$base-minus-two: .5rem;
+$base-minus-three: .333rem;
+$base-minus-four: .222rem;
+$base-minus-five: .099rem;
+$base-minus-six: .066rem;
+
+$small-line-height: $base-plus-two;
+$large-line-height: $base-plus-three;
+
+@mixin set-size($property,$size) {
+	#{$property}: ($size / 1rem) * 16px;
+	#{$property}: $size;
+}
+
+// Base
+@mixin line-height($line-height: $small-line-height, $break-width: $small-width) {
+	@media screen and (min-width: ($break-width / 1rem * 1em) + 2em) {
+		@include set-size(line-height, $line-height)	
+	}
+}
+
+
+// Does not yet work with “auto”
+@mixin margin-padding($property,$top, $right: $top, $bottom: $top, $left: $right) {
+	#{$property}: (($top / 1rem) * 16px) (($right / 1rem) * 16px) (($bottom / 1rem) * 16px) (($left / 1rem) * 16px);
+	#{$property}: $top $right $bottom $left;
+}
+
+// Transitions
+$color-transition: color 0.5s ease;
+$background-transition: background 0.5s ease;
+$border-transition: border 0.3s ease;
+$opacity-transition: opacity 0.5s ease;
+$width-transition: width .75s ease;
+$height-transition: height .75s ease;
+
+@mixin borders {
+	border-top: ($base-minus-five / 1rem * 16px) solid $dark-blue;
+	border-top: $base-minus-five solid $dark-blue;
+	border-bottom: ($base-minus-five / 1rem * 16px) dotted $dark-blue;
+	border-bottom: $base-minus-five dotted $dark-blue;
+}
+
+@mixin clearfix {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
 }
